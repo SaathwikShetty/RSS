@@ -15,13 +15,12 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-		destroy-method="close">
+	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName" value="${mysql.driverClassName}" />
-		<beans:property name="URL" value="${mysql.url}" />
-		<beans:property name="user" value="${mysql.username}" />
+		<beans:property name="url" value="${mysql.url}" />
+		<beans:property name="username" value="${mysql.username}" />
 		<beans:property name="password" value="${mysql.password}" />
-		<beans:property name="connectionCachingEnabled" value="true" />
+		<!-- <beans:property name="connectionCachingEnabled" value="true" />  -->
 	</beans:bean>
 	<context:property-placeholder location="classpath:db.properties" />
 	
@@ -41,7 +40,7 @@
 		</beans:property>
 		<beans:property name="hibernateProperties">
 			<beans:props>
-				<beans:prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect
+				<beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
 				</beans:prop>
 				<beans:prop key="hibernate.show_sql">true</beans:prop>
 				<beans:prop key="hibernate.hbm2ddl.auto">update</beans:prop>

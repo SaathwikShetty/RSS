@@ -10,10 +10,10 @@
 	<context:component-scan base-package="com.rss.login" />
 
 	<beans:bean id="UserService" class="com.rss.login.service.impl.UserServiceImpl">
-		<beans:property name="UserDao" ref="UserDao"></beans:property>
+		<beans:property name="userDao" ref="userDao"></beans:property>
 	</beans:bean>
 
-	<beans:bean id="UserDao" class="com.rss.login.dao.impl.UserDaoImpl">
+	<beans:bean id="userDao" class="com.rss.login.dao.impl.UserDaoImpl">
 		<beans:property name="sessionFactory"
 			ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>

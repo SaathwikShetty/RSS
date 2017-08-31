@@ -9,9 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import com.rss.login.bean.User;
 import com.rss.login.dao.UserDao;
-import com.rss.login.bean.User;
 
-@Repository("loginDao")
+@Repository
 public class UserDaoImpl implements UserDao {
 
 	@Autowired
@@ -41,10 +40,10 @@ public class UserDaoImpl implements UserDao {
 		return false;
 	}
 
-	public User userLogin(User userDetails) {
+ 	public User userLogin(User userDetails) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
-		String hql = "from com.rss.login.bean.User as u where u.user_ID=? and u.user_password=?";
+		String hql = "from User where userID=? and userPassword=?";
 		try {
 			Query query = session.createQuery(hql);
 			query.setParameter(0, userDetails.getUserID());

@@ -1,11 +1,12 @@
 package com.rss.login.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.rss.login.dao.UserDao;
 import com.rss.login.bean.User;
 import com.rss.login.service.UserService;
-
+@Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired

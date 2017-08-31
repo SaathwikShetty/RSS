@@ -4,14 +4,14 @@ import java.util.Date;
 
 import javax.persistence.*;
 
-import org.hibernate.validator.constraints.NotEmpty;
+//import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "USER_PERMISSION")
 public class User {
 
 	@Id
-	@NotEmpty
+//	@NotEmpty
 	@Column(name = "USER_ID")
 	private String userID;
 
