@@ -18,6 +18,3 @@
 	</center>
 </body>
 </html>
-
-Read more:
-http://mrbool.com/how-to-create-a-login-form-with-jsp/25685#ixzz4pLFNjOXR

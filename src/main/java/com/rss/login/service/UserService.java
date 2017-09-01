@@ -7,7 +7,9 @@ public interface UserService {
 
 	public boolean login(String userName, String password, boolean changePassword, String permissionID);
 	
-	public boolean userAuthentication(User userDetails);
+	public User userAuthentication(User userBean);
 	
 	public User userLogin(User usedDetails);
+	
+	public String encryptPassword(String password);
 }

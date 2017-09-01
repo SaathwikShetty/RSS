@@ -9,7 +9,7 @@ public interface UserDao {
 
 	public boolean addUser(String userName, String password);
 	
-	public boolean verifyUser(String userName,String password);
+	public User verifyUser(User userBean);
 	
 	public User userLogin(User userDetails);
 }

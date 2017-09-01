@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
 import com.rss.login.bean.User;
@@ -35,12 +36,29 @@ public class UserDaoImpl implements UserDao {
 		return false;
 	}
 
-	public boolean verifyUser(String userName, String password) {
-		// TODO Auto-generated method stub
-		return false;
+	public User verifyUser(User userBean) {
+		Session session = sessionFactory.openSession();
+		Transaction tx = session.beginTransaction();
+		String hql = "from User where userID=? and userPassword=?";
+		try {
+			Query query = session.createQuery(hql);
+			query.setParameter(0, userBean.getUserID());
+			query.setParameter(1, userBean.getUserPassword());
+			User userDetails = (User) query.uniqueResult();
+			tx.commit();
+			session.close();
+			if (userDetails.getPermissionID() != null)
+				return userDetails;
+		} catch (Exception e) {
+			tx.rollback();
+			session.close();
+			e.printStackTrace();
+			return userBean;
+		}
+		return userBean;
 	}
 
- 	public User userLogin(User userDetails) {
+	public User userLogin(User userDetails) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
 		String hql = "from User where userID=? and userPassword=?";

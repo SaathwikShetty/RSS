@@ -8,6 +8,8 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
 	<annotation-driven />
+	<!-- <context:component-scan base-package="com.rss.login" /> -->
+	
 	<resources mapping="/resources/**" location="/resources/" />
 	<beans:bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -23,6 +25,15 @@
 		<!-- <beans:property name="connectionCachingEnabled" value="true" />  -->
 	</beans:bean>
 	<context:property-placeholder location="classpath:db.properties" />
+	
+<!-- 	<beans:bean id="userService" class="com.rss.login.service.impl.UserServiceImpl">
+		<beans:property name="userDao" ref="userDao"></beans:property>
+	</beans:bean>
+
+	<beans:bean id="userDao" class="com.rss.login.dao.impl.UserDaoImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean> -->
 	
 	<!-- Hibernate 4 SessionFactory Bean definition -->
 	<beans:bean id="hibernate4AnnotatedSessionFactory"
@@ -54,8 +65,6 @@
 		<beans:property name="sessionFactory"
 			ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>	
-	
-	
 	
 	<beans:import resource="login-context.xml"/>
 </beans:beans>
